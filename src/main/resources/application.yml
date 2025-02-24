@@ -41,11 +41,10 @@ logging:
         service: info
         controller: info
 
-
-alioss:
-  access-key-id: LTAI5tM72ks5rAhK65eby5go
-  access-key-secret: nbHAq1DbaCysOQeAO3c24KXkuTIni0
-  endpoint: oss-cn-hangzhou.aliyuncs.com
-  bucket-name: sky-itcast-hzx
+#alioss:
+#  access-key-id: LTAI5tM72ks5rAhK65eby5go
+#  access-key-secret: nbHAq1DbaCysOQeAO3c24KXkuTIni0
+#  endpoint: oss-cn-hangzhou.aliyuncs.com
+#  bucket-name: sky-itcast-hzx
 
 
