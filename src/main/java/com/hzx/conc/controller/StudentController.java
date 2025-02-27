@@ -5,15 +5,20 @@ import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.result.Result;
 import com.hzx.conc.common.utils.AliOssUtil;
 import com.hzx.conc.entity.Student;
+import com.hzx.conc.entity.StudentDTO;
 import com.hzx.conc.service.StudentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -30,11 +35,28 @@ public class StudentController {
     @Resource
     private AliOssUtil aliOssUtil;
 
+    private final String PATH_PREFIX = "C:\\Users\\15203\\Downloads\\elementui资料\\faceimg";
 
     @ApiOperation("获取所有学生数据")
     @GetMapping("/list")
     public Result<List<Student>> list() {
         List<Student> studentList = studentService.list();
+
+        // 遍历学生列表，将 faceimg 转换为 Base64 编码
+        studentList.forEach(student -> {
+            if (student.getFaceimg() != null && !student.getFaceimg().isEmpty()) {
+                Path imagePath = Paths.get(PATH_PREFIX, student.getFaceimg()); // 获取图片路径
+                try {
+                    byte[] imageBytes = Files.readAllBytes(imagePath); // 读取图片字节
+                    String base64Image = "data:image/png;base64," + Base64Utils.encodeToString(imageBytes); // 转换为 Base64
+                    student.setFaceimg(base64Image); // 设置 Base64 字符串
+                } catch (Exception e) {
+                    student.setFaceimg(null); // 如果读取失败，设置为空
+                    log.error(e.getMessage());
+                }
+            }
+        });
+
         return Result.success(studentList);
     }
 
@@ -59,7 +81,7 @@ public class StudentController {
         return Result.success(studentList);
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/oss/upload")
     @ApiOperation("文件上传")
     public Result<String> upload(
             @RequestParam("file") MultipartFile file,
@@ -89,5 +111,51 @@ public class StudentController {
         return Result.success();
 
     }
+
+    @ApiOperation("文件上传")
+    @GetMapping("/upload")
+    public Result<String> upload2(
+            @RequestParam("fileName") String fileName,
+            @RequestParam("name") String name
+    ) {
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getSname, name));
+        if (ObjectUtils.isEmpty(student)) {
+            return Result.error(MessageConstant.USER_NOT_EXIST);
+        }
+        student.setFaceimg(fileName);
+        studentService.updateById(student);
+        return Result.success();
+
+    }
+
+
+    @ApiOperation("添加学生")
+    @PostMapping("/add")
+    public Result<String> add(
+            @RequestParam String sno,
+            @RequestParam String sname,
+            @RequestParam String ssex,
+            @RequestParam String sdept,
+            @RequestParam String clazz_name,
+            @RequestParam String sphone,
+            @RequestParam String faceimg) { // 处理头像文件上传
+
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getSname, sname));
+        if (!ObjectUtils.isEmpty(student)) {
+            return Result.error(MessageConstant.USER_ALREADY_EXIST);
+        }
+        Student stu = new Student();
+        stu.setSno(sno);
+        stu.setSname(sname);
+        stu.setSsex(ssex);
+        stu.setSdept(sdept);
+        stu.setClazzName(clazz_name);
+        stu.setSphone(sphone);
+        stu.setFaceimg(faceimg);
+
+        studentService.save(stu);
+        return Result.success();
+    }
+
 
 }

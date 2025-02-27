@@ -33,4 +33,5 @@ public class MessageConstant {
 
     public static final String REDIS_ERROR = "redis发生错误";
     public static final String REDIS_BLANK_KEY = "redis添加数据时，key不能为空";
+    public static final String CLASS_NOT_EXIST = "班级不存在";
 }
