@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public interface StudentService extends IService<Student> {
 
-    Map<Long, List<Student>> listClazz();
+    Map<Long, List<Student>> listClazz(Integer pageIndex, Integer pageSize);
 
     List<Student> listByclazzId(Long clazzId, Integer pageIndex, Integer pageSize);
 }

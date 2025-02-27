@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hzx.conc.common.exception.BadRequestException;
-import com.hzx.conc.common.exception.BaseException;
 import com.hzx.conc.common.utils.Collections3;
 import com.hzx.conc.entity.Clazz;
 import com.hzx.conc.entity.Student;
@@ -35,8 +34,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
 
 
     @Override
-    public Map<Long, List<Student>> listClazz() {
-        List<Student> studentList = studentMapper.selectList(new LambdaQueryWrapper<>());
+    public Map<Long, List<Student>> listClazz(Integer pageIndex, Integer pageSize) {
+
+        Page<Student> page = new Page<>(pageIndex, pageSize);
+        LambdaQueryWrapper<Student> queryWrapper = new LambdaQueryWrapper<>();
+
+        Page<Student> result = studentMapper.selectPage(page, queryWrapper);
+        List<Student> studentList = result.getRecords();
         // 每班的学生集合
         Map<Long, List<Student>> studentMap = Collections3.groupingBy(
                 studentList,
