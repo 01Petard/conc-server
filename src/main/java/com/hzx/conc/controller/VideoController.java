@@ -32,8 +32,7 @@ public class VideoController {
     @Resource
     private ClazzService clazzService;
 
-//    private final String PATH_PREFIX = "C:\\Users\\15203\\Downloads\\elementui资料\\video_url";
-    private final String PATH_PREFIX = "/Users/hzx/Desktop";
+    private final String PATH_PREFIX = "src/main/resources/img";
 
     @ApiOperation("获取所有视频数据")
     @GetMapping("/list")
@@ -41,15 +40,15 @@ public class VideoController {
         List<Video> videoList = videoService.list();
 
         // 遍历学生列表，将 faceimg 转换为 Base64 编码
-        videoList.forEach(student -> {
-            if (student.getVimg() != null && !student.getVimg().isEmpty()) {
-                Path imagePath = Paths.get(PATH_PREFIX, student.getVimg()); // 获取图片路径
+        videoList.forEach(video -> {
+            if (video.getVimg() != null && !video.getVimg().isEmpty()) {
+                Path imagePath = Paths.get(PATH_PREFIX, video.getVimg()); // 获取图片路径
                 try {
                     byte[] imageBytes = Files.readAllBytes(imagePath); // 读取图片字节
                     String base64Image = "data:image/png;base64," + Base64Utils.encodeToString(imageBytes); // 转换为 Base64
-                    student.setVimg(base64Image); // 设置 Base64 字符串
+                    video.setVimg(base64Image); // 设置 Base64 字符串
                 } catch (Exception e) {
-                    student.setVimg(null); // 如果读取失败，设置为空
+                    video.setVimg(null); // 如果读取失败，设置为空
                     log.error(e.getMessage());
                 }
             }

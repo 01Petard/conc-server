@@ -36,8 +36,8 @@ public class StudentController {
     @Resource
     private AliOssUtil aliOssUtil;
 
-//    private final String PATH_PREFIX = "C:\\Users\\15203\\Downloads\\elementui资料\\faceimg";
-    private final String PATH_PREFIX = "/Users/hzx/Desktop";
+    private final String PATH_PREFIX = "src/main/resources/img";
+
 
     @ApiOperation("获取所有学生数据")
     @GetMapping("/list")
