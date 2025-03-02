@@ -5,7 +5,7 @@ import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.result.Result;
 import com.hzx.conc.common.utils.AliOssUtil;
 import com.hzx.conc.entity.Student;
-import com.hzx.conc.entity.StudentDTO;
+import com.hzx.conc.entity.StudentVo;
 import com.hzx.conc.service.StudentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -35,7 +36,8 @@ public class StudentController {
     @Resource
     private AliOssUtil aliOssUtil;
 
-    private final String PATH_PREFIX = "C:\\Users\\15203\\Downloads\\elementui资料\\faceimg";
+//    private final String PATH_PREFIX = "C:\\Users\\15203\\Downloads\\elementui资料\\faceimg";
+    private final String PATH_PREFIX = "/Users/hzx/Desktop";
 
     @ApiOperation("获取所有学生数据")
     @GetMapping("/list")
@@ -58,6 +60,22 @@ public class StudentController {
         });
 
         return Result.success(studentList);
+    }
+
+    @ApiOperation("获取所有学生数据")
+    @GetMapping("/listName")
+    public Result<List<StudentVo>> listName() {
+        List<Student> studentList = studentService.list();
+
+        List<StudentVo> voList = new ArrayList<>();
+
+        studentList.forEach(student -> {
+            StudentVo studentVo = new StudentVo();
+            studentVo.setSno(student.getSno());
+            studentVo.setSname(student.getSname());
+            voList.add(studentVo);
+        });
+        return Result.success(voList);
     }
 
     @ApiOperation("获取每个班级的学生数据")

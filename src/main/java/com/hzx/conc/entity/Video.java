@@ -22,10 +22,14 @@ public class Video extends BaseEntity {
     private Long vid;
     //视频名称
     private String vname;
+    //视频图片
+    private String vimg;
     //上课班级
     private Long classId;
     //课程名称
     private String cname;
+    //是否完成检测
+    private Integer status;
 
 }
 
