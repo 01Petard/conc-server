@@ -167,7 +167,7 @@ public class StudentController {
             @RequestParam String sdeptId,
             @RequestParam String clazzId,
             @RequestParam String sphone,
-            @RequestParam String faceimg
+            @RequestParam(required = false) String faceimg
     ) {
         // 查询是否存在学号相同的学生
         Student student = studentService.getOne(new LambdaQueryWrapper<Student>()
