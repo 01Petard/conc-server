@@ -1,7 +1,6 @@
-package com.hzx.conc.entity;
+package com.hzx.conc.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

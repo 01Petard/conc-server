@@ -1,13 +1,8 @@
-package com.hzx.conc.entity;
-
-import java.util.Date;
+package com.hzx.conc.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
  * (Course)表实体类

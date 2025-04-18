@@ -1,7 +1,7 @@
 package com.hzx.conc.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hzx.conc.entity.Video;
+import com.hzx.conc.model.entity.Video;
 
 /**
  * (Video)表服务接口

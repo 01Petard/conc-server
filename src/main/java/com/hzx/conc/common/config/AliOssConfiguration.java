@@ -1,4 +1,4 @@
-package com.hzx.conc.config;
+package com.hzx.conc.common.config;
 
 import com.hzx.conc.common.properties.AliOssProperties;
 import com.hzx.conc.common.utils.AliOssUtil;

@@ -4,8 +4,8 @@ package com.hzx.conc.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.result.Result;
-import com.hzx.conc.entity.Clazz;
-import com.hzx.conc.entity.Video;
+import com.hzx.conc.model.entity.Clazz;
+import com.hzx.conc.model.entity.Video;
 import com.hzx.conc.service.ClazzService;
 import com.hzx.conc.service.VideoService;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +20,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * 视频管理
+ * @author 15203
+ * @since 2025-02-22 16:44:52
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/video")

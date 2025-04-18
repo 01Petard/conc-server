@@ -1,4 +1,4 @@
-package com.hzx.conc.handler;
+package com.hzx.conc.common.handler;
 
 import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.exception.BaseException;

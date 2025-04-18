@@ -1,7 +1,8 @@
-package com.hzx.conc.entity;
+package com.hzx.conc.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.relational.core.mapping.Table;
@@ -14,13 +15,22 @@ import org.springframework.data.relational.core.mapping.Table;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-@Table("clazz")
+@TableName("clazz") // 表名
 public class Clazz extends BaseEntity {
-    //班级ID
+    /*
+    班级ID
+     */
     @TableId(type = IdType.AUTO)
     private Long clazzId;
-    //班级名称
+
+    /*
+    班级名称
+     */
     private String clazzName;
 
+    /*
+    所属学院ID
+     */
+    private String deptId;
 }
 

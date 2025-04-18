@@ -2,7 +2,7 @@ package com.hzx.conc.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hzx.conc.mapper.ClazzMapper;
-import com.hzx.conc.entity.Clazz;
+import com.hzx.conc.model.entity.Clazz;
 import com.hzx.conc.service.ClazzService;
 import org.springframework.stereotype.Service;
 

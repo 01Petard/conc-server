@@ -1,7 +1,7 @@
 package com.hzx.conc.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.hzx.conc.entity.Student;
+import com.hzx.conc.model.entity.Student;
 
 /**
  * (Student)表数据库访问层

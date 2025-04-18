@@ -4,8 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.result.Result;
 import com.hzx.conc.common.utils.AliOssUtil;
-import com.hzx.conc.entity.Student;
-import com.hzx.conc.entity.StudentVo;
+import com.hzx.conc.model.dto.StudentEditDto;
+import com.hzx.conc.model.entity.Dept;
+import com.hzx.conc.model.entity.Student;
+import com.hzx.conc.model.vo.StudentVo;
+import com.hzx.conc.service.DeptService;
 import com.hzx.conc.service.StudentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +27,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * 学生管理
+ * @author 15203
+ * @since 2025-02-22 16:44:52
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/student")
@@ -32,6 +40,9 @@ public class StudentController {
 
     @Resource
     private StudentService studentService;
+
+    @Resource
+    private DeptService deptService;
 
     @Resource
     private AliOssUtil aliOssUtil;
@@ -153,21 +164,29 @@ public class StudentController {
             @RequestParam String sno,
             @RequestParam String sname,
             @RequestParam String ssex,
-            @RequestParam String sdept,
-            @RequestParam String clazz_name,
+            @RequestParam String sdeptId,
+            @RequestParam String clazzId,
             @RequestParam String sphone,
-            @RequestParam String faceimg) { // 处理头像文件上传
-
-        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getSname, sname));
+            @RequestParam String faceimg
+    ) {
+        // 查询是否存在学号相同的学生
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>()
+                .eq(Student::getSno, sno));
         if (!ObjectUtils.isEmpty(student)) {
             return Result.error(MessageConstant.USER_ALREADY_EXIST);
         }
+
+
+        // 获取学院名称
+        Dept dept = deptService.getOne(new LambdaQueryWrapper<Dept>()
+                .eq(Dept::getDeptId, sdeptId));
+
         Student stu = new Student();
         stu.setSno(sno);
         stu.setSname(sname);
         stu.setSsex(ssex);
-        stu.setSdept(sdept);
-        stu.setClazzName(clazz_name);
+        stu.setSdept(dept.getDeptName());
+        stu.setClazzName(clazzId);
         stu.setSphone(sphone);
         stu.setFaceimg(faceimg);
 
@@ -175,5 +194,37 @@ public class StudentController {
         return Result.success();
     }
 
+
+    @ApiOperation("编辑学生信息")
+    @PutMapping("/update")
+    public Result<String> update(@RequestBody StudentEditDto dto) {
+
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getSno, dto.getSno()));
+        if (ObjectUtils.isEmpty(student)) {
+            return Result.error(MessageConstant.USER_ALREADY_EXIST);
+        }
+
+        student.setSname(dto.sname);
+        student.setSsex(dto.ssex);
+        student.setSdept(dto.getSdept());
+        student.setClazzName(dto.className);
+        student.setSphone(dto.sphone);
+
+        studentService.updateById(student);
+        return Result.success();
+    }
+
+    @ApiOperation("删除学生")
+    @DeleteMapping("/delete")
+    public Result<String> delete(@RequestParam String sno) {
+
+        Student student = studentService.getOne(new LambdaQueryWrapper<Student>().eq(Student::getSno, sno));
+        if (ObjectUtils.isEmpty(student)) {
+            return Result.error(MessageConstant.USER_NOT_EXIST);
+        }
+
+        studentService.removeById(sno);
+        return Result.success();
+    }
 
 }

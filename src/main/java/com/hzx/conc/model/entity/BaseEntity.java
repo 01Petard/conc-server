@@ -1,4 +1,4 @@
-package com.hzx.conc.entity;
+package com.hzx.conc.model.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -7,15 +7,18 @@ import lombok.Data;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
+import java.util.Date;
+
 @Data
 public class BaseEntity {
-    //创建时间
-    @TableField(fill = FieldFill.INSERT)
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
     private Date createTime;
-    //更新时间
-    @TableField(fill = FieldFill.INSERT_UPDATE)
+
+    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
-    //是否已删除
+
     @TableLogic
     private Integer deleted;
 }

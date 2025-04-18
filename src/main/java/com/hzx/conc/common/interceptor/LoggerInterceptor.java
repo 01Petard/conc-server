@@ -1,4 +1,4 @@
-package com.hzx.conc.interceptor;
+package com.hzx.conc.common.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

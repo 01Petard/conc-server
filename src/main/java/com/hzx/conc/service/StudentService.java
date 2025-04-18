@@ -1,7 +1,7 @@
 package com.hzx.conc.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hzx.conc.entity.Student;
+import com.hzx.conc.model.entity.Student;
 
 import java.util.List;
 import java.util.Map;

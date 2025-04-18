@@ -2,23 +2,24 @@ package com.hzx.conc.controller;
 
 import com.hzx.conc.common.result.Result;
 import com.hzx.conc.common.utils.JsonDataReader;
-import com.hzx.conc.entity.ChartData;
-import com.hzx.conc.entity.Conc;
+import com.hzx.conc.model.entity.ChartData;
+import com.hzx.conc.model.entity.Conc;
 import com.hzx.conc.service.ConcService;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
 /**
- * ConcController
- *
+ * 专注度分析管理
  * @author 15203
  * @since 2025-02-22 16:44:52
  */
 @CrossOrigin
 @RestController
 @RequestMapping("/conc")
+@Slf4j
 public class ConcController {
 
     @Resource

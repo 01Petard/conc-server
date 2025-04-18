@@ -2,6 +2,7 @@ package com.hzx.conc.controller;
 
 import com.hzx.conc.common.result.Result;
 import com.hzx.conc.common.utils.AliOssUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * FileController
- *
+ * 文件管理
  * @author 15203
  * @since 2025-02-25 15:20:50
  */
 @RestController
 @RequestMapping("/file")
+@Slf4j
 public class FileController {
 
 

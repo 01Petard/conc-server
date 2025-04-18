@@ -2,7 +2,7 @@ package com.hzx.conc.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.hzx.conc.mapper.CourseMapper;
-import com.hzx.conc.entity.Course;
+import com.hzx.conc.model.entity.Course;
 import com.hzx.conc.service.CourseService;
 import org.springframework.stereotype.Service;
 

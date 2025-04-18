@@ -1,4 +1,4 @@
-package com.hzx.conc.entity;
+package com.hzx.conc.model.entity;
 
 import lombok.Data;
 

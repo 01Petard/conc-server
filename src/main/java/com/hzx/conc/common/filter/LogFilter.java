@@ -1,4 +1,4 @@
-package com.hzx.conc.filter;
+package com.hzx.conc.common.filter;
 
 import org.slf4j.MDC;
 import org.springframework.context.annotation.Configuration;

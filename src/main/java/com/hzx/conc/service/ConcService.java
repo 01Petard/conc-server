@@ -1,8 +1,7 @@
 package com.hzx.conc.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hzx.conc.entity.Clazz;
-import com.hzx.conc.entity.Conc;
+import com.hzx.conc.model.entity.Conc;
 
 /**
  * (Class)表服务接口
