@@ -4,7 +4,10 @@ package com.hzx.conc.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.result.Result;
+import com.hzx.conc.model.dto.VideoAddDto;
 import com.hzx.conc.model.entity.Clazz;
+import com.hzx.conc.model.entity.Dept;
+import com.hzx.conc.model.entity.Student;
 import com.hzx.conc.model.entity.Video;
 import com.hzx.conc.service.ClazzService;
 import com.hzx.conc.service.VideoService;
@@ -15,6 +18,7 @@ import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotBlank;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -85,6 +89,55 @@ public class VideoController {
     }
 
 
+    @ApiOperation("编辑视频")
+    @PutMapping("/update")
+    public Result<String> update(
+            @RequestParam String vid,
+            @RequestParam String vname,
+            @RequestParam String cname
+    ) {
+        Video video = videoService.getOne(new LambdaQueryWrapper<Video>()
+                .eq(Video::getVid, vid));
+        if (ObjectUtils.isEmpty(video)){
+            return Result.error(MessageConstant.VIDEO_NOT_EXIST);
+        }
 
+        video.setVname(vname);
+        video.setCname(cname);
+
+        videoService.updateById(video);
+        return Result.success();
+    }
+
+
+    @ApiOperation("删除视频")
+    @DeleteMapping("/delete")
+    public Result<String> update(@RequestParam String vid) {
+        Video video = videoService.getOne(new LambdaQueryWrapper<Video>()
+                .eq(Video::getVid, vid));
+        if (ObjectUtils.isEmpty(video)){
+            return Result.error(MessageConstant.VIDEO_NOT_EXIST);
+        }
+
+        videoService.removeById(vid);
+        return Result.success();
+    }
+
+
+    @ApiOperation("新增视频")
+    @PostMapping("/add")
+    public Result<String> add(
+            @RequestParam @NotBlank String vname,
+            @RequestParam @NotBlank String cname,
+            @RequestParam(required = false) String vimg
+    ) {
+        Video video = new Video();
+        video.setVname(vname);
+        video.setCname(cname);
+        video.setVimg(vimg);
+
+        videoService.save(video);
+        return Result.success();
+    }
 
 }

@@ -16,9 +16,9 @@ import lombok.EqualsAndHashCode;
 public class User extends BaseEntity {
 
     @TableId(type = IdType.AUTO)
-    private Long uid;
+    private Long userId;
 
-    private String username;
+    private String userName;
 
     private String password;
 
