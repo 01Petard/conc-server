@@ -1,17 +1,17 @@
 /*
- Navicat Premium Dump SQL
+ Navicat Premium Data Transfer
 
  Source Server         : 1.94.147.176_3306
  Source Server Type    : MySQL
- Source Server Version : 80403 (8.4.3)
+ Source Server Version : 80403
  Source Host           : 1.94.147.176:3306
  Source Schema         : classroom
 
  Target Server Type    : MySQL
- Target Server Version : 80403 (8.4.3)
+ Target Server Version : 80403
  File Encoding         : 65001
 
- Date: 02/04/2025 16:27:17
+ Date: 21/04/2025 20:36:53
 */
 
 SET NAMES utf8mb4;
@@ -24,33 +24,37 @@ DROP TABLE IF EXISTS `clazz`;
 CREATE TABLE `clazz`  (
   `clazz_id` bigint NOT NULL AUTO_INCREMENT COMMENT '班级ID',
   `clazz_name` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '班级名称',
+  `dept_id` bigint NULL DEFAULT NULL COMMENT '班级所在学院ID',
   `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` int NULL DEFAULT 0 COMMENT '是否已删除',
   PRIMARY KEY (`clazz_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of clazz
 -- ----------------------------
-INSERT INTO `clazz` VALUES (1, '13英语1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (2, '14物流2', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (3, '14电气1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (4, '14网络1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (5, '14计科1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (6, '14计科3', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (7, '15软工2', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (8, '17物流1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (9, '17物流2', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (10, '17物流3', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (11, '17计应1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (12, '18信管1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (13, '18信管2', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (14, '18信管3', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (15, '18计科1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (16, '18软工UI1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (17, '19信管1', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
-INSERT INTO `clazz` VALUES (18, '19信管2', '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (1, '13英语1', 35, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (2, '14物流2', 36, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (3, '14电气1', 38, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (4, '14网络1', 38, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (5, '14计科1', 34, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (6, '14计科3', 34, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (7, '15软工2', 37, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (8, '17物流1', 36, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (9, '17物流2', 36, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (10, '17物流3', 36, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (11, '17计应1qqqqq', 33, '2025-02-20 13:05:57', '2025-04-21 12:13:41', 0);
+INSERT INTO `clazz` VALUES (12, '18信管1', 33, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (13, '18信管2', 33, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (14, '18信管3', 33, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (15, '18计科1', 38, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (16, '18软工UI1', 37, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (17, '19信管1', 36, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (18, '19信管2', 36, '2025-02-20 13:05:57', '2025-02-20 13:05:57', 0);
+INSERT INTO `clazz` VALUES (32, '信息new班1111', 33, '2025-04-17 07:07:36', '2025-04-18 07:21:06', 1);
+INSERT INTO `clazz` VALUES (33, '1234', 36, '2025-04-18 07:21:24', '2025-04-18 07:21:24', 0);
+INSERT INTO `clazz` VALUES (34, '32132133', 34, '2025-04-21 12:14:07', '2025-04-21 12:14:07', 0);
 
 -- ----------------------------
 -- Table structure for clazz_course
@@ -105,7 +109,7 @@ CREATE TABLE `course`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` int NULL DEFAULT 0 COMMENT '是否已删除',
   PRIMARY KEY (`cno`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 56 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course
@@ -141,6 +145,30 @@ INSERT INTO `course` VALUES (54, 'DBA实战-数据库管理员之路', NULL, 3, 
 INSERT INTO `course` VALUES (55, 'NoSQL数据库', NULL, 1, NULL, NULL, 0);
 
 -- ----------------------------
+-- Table structure for dept
+-- ----------------------------
+DROP TABLE IF EXISTS `dept`;
+CREATE TABLE `dept`  (
+  `dept_id` bigint NOT NULL AUTO_INCREMENT COMMENT '学院ID',
+  `dept_name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '学院名称',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted` int NOT NULL DEFAULT 0 COMMENT '是否已删除',
+  PRIMARY KEY (`dept_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 42 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of dept
+-- ----------------------------
+INSERT INTO `dept` VALUES (33, '信息学院', '2025-04-17 10:47:52', '2025-04-21 12:13:36', 0);
+INSERT INTO `dept` VALUES (34, '机电学院', '2025-04-17 10:48:18', '2025-04-17 06:12:57', 0);
+INSERT INTO `dept` VALUES (35, '人文学院', '2025-04-17 10:48:24', '2025-04-17 10:48:24', 0);
+INSERT INTO `dept` VALUES (36, '经管学院', '2025-04-17 10:48:27', '2025-04-17 10:48:27', 0);
+INSERT INTO `dept` VALUES (37, '金信学院', '2025-04-17 10:48:31', '2025-04-17 10:48:31', 0);
+INSERT INTO `dept` VALUES (38, '计算机科学与技术学院', '2025-04-17 10:48:36', '2025-04-17 10:48:36', 0);
+INSERT INTO `dept` VALUES (42, '111', '2025-04-17 06:31:44', '2025-04-17 06:31:44', 0);
+
+-- ----------------------------
 -- Table structure for student
 -- ----------------------------
 DROP TABLE IF EXISTS `student`;
@@ -167,7 +195,8 @@ CREATE TABLE `student`  (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES ('1311104', '李嘉欣', '女', '人文学院', 1, '13英语1', '1994-05-28 00:00:00', '山西太原', '330204199405281056', '15900002211', '1311104.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
+INSERT INTO `student` VALUES ('1', '1', '男', '1', NULL, '1', NULL, NULL, NULL, '1', 'PixPin_2025-04-17_15-39-30.png', '2025-04-17 07:39:36', '2025-04-17 07:39:36', 1);
+INSERT INTO `student` VALUES ('1311104', '李嘉欣', '女', '人文学院', 1, '13英语1', '1994-05-28 00:00:00', '山西太原', '330204199405281056', '15900002211', '1311104.png', '2025-02-27 13:05:30', '2025-04-21 12:28:52', 0);
 INSERT INTO `student` VALUES ('1311105', '苏有明', '男', '人文学院', 1, '13英语1', '1995-04-16 00:00:00', '内蒙古包头', '330204199504162036', '15900002222', '1311105.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
 INSERT INTO `student` VALUES ('1311106', '夏小雨', '男', '人文学院', 1, '13英语1', '1996-10-12 00:00:00', '甘肃兰州', '330204199610121046', '15900002233', '1311106.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
 INSERT INTO `student` VALUES ('1400802', '特拉', NULL, '机电学院', NULL, NULL, NULL, NULL, NULL, NULL, '1400802.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 1);
@@ -209,10 +238,12 @@ INSERT INTO `student` VALUES ('1811202', '吴彦祖', '男', '信息学院', 13,
 INSERT INTO `student` VALUES ('1811301', '刘烨', '男', '信息学院', 14, '18信管3', '1999-12-23 00:00:00', '山东烟台', '330206199912234634', '15911113311', 'PixPin_2025-02-25_14-29-33.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
 INSERT INTO `student` VALUES ('1811302', '周迅', '女', '信息学院', 14, '18信管3', '1999-08-07 00:00:00', '山东威海', '33020619990201141x', '15911113322', 'PixPin_2025-02-25_14-29-33.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
 INSERT INTO `student` VALUES ('1811303', '朱茵', '女', '信息学院', 14, '18信管3', '2000-02-14 00:00:00', '辽宁大连', '330206200002140914', '15911113333', 'PixPin_2025-02-25_14-29-33.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
-INSERT INTO `student` VALUES ('1822110', '黄泽校', '男', '金信学院', 16, '18软工UI1', '2022-01-17 00:00:00', '浙江宁波', '330281200005021735', '13248684099', 'hzx.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
+INSERT INTO `student` VALUES ('1822110', '黄泽校', '男', '金信学院', 16, '18软工UI1', '2022-01-17 00:00:00', '浙江宁波', '330281200005021735', '13248684099', 'PixPin_2025-04-17_15-39-30.png', '2025-02-27 13:05:30', '2025-04-18 08:50:43', 0);
 INSERT INTO `student` VALUES ('1911102', '张信哲', '男', '信息学院', 17, '19信管1', '1999-07-14 00:00:00', '山东烟台', '330204199907145027', '15911113377', 'PixPin_2025-02-25_14-29-33.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
-INSERT INTO `student` VALUES ('1911104', '红孩儿', 'male', '1', NULL, '1', NULL, NULL, NULL, '1', 'PixPin_2025-02-18_10-45-56.png', NULL, NULL, 0);
+INSERT INTO `student` VALUES ('1911104', '红孩儿', 'male', '信息学院', NULL, '1', NULL, NULL, NULL, '1', 'PixPin_2025-02-18_10-45-56.png', NULL, NULL, 0);
 INSERT INTO `student` VALUES ('1911201', '陈坤', '男', '信息学院', 18, '19信管2', '1990-07-19 00:00:00', '山东烟台', '330204199007199604', '15911113388', 'PixPin_2025-02-25_14-29-33.png', '2025-02-27 13:05:30', '2025-02-27 13:05:41', 0);
+INSERT INTO `student` VALUES ('2019010', '张三', '男', '计算机科学与技术学院', 1, '计算机科学与技术学院', '1999-01-01 00:00:00', '北京', '110101199901010001', '13800000000', '', '2025-04-09 15:34:20', '2025-04-09 15:34:20', 1);
+INSERT INTO `student` VALUES ('2200802', 'hzx', '男', '信息学院', NULL, '11', NULL, NULL, NULL, '13248684099', 'PixPin_2025-04-17_15-39-30.png', '2025-04-18 08:46:28', '2025-04-18 08:46:28', 0);
 
 -- ----------------------------
 -- Table structure for student_score
@@ -318,7 +349,7 @@ CREATE TABLE `teacher`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` int NULL DEFAULT 0 COMMENT '是否已删除',
   PRIMARY KEY (`tid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of teacher
@@ -452,17 +483,20 @@ CREATE TABLE `video`  (
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `deleted` int NULL DEFAULT 0 COMMENT '是否已删除',
   PRIMARY KEY (`vid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of video
 -- ----------------------------
-INSERT INTO `video` VALUES (1, '13英语1', '1.png', 1, '微积分原理', 1, '2025-03-02 15:08:39', '2025-03-02 15:08:39', 0);
+INSERT INTO `video` VALUES (1, '13英语11', '1.png', 1, '微积分原理1', 1, '2025-03-02 15:08:39', '2025-04-21 11:32:18', 0);
 INSERT INTO `video` VALUES (2, '14物流2', '2.png', 1, '微积分原理', 1, '2025-03-02 15:35:57', '2025-03-02 15:35:57', 0);
-INSERT INTO `video` VALUES (3, '14电气1', '3.png', 2, '数据结构与算法', 1, '2025-03-02 15:35:57', '2025-03-02 15:35:57', 0);
+INSERT INTO `video` VALUES (3, '14电气1', '3.png', 2, '数据结构与算法', 0, '2025-03-02 15:35:57', '2025-04-21 12:27:36', 0);
 INSERT INTO `video` VALUES (4, '14网络1', '4.png', 3, '计算机科学导论', 1, '2025-03-02 15:35:57', '2025-03-02 15:35:57', 0);
 INSERT INTO `video` VALUES (5, '14计科1', '5.png', 4, '人工智能基础', 1, '2025-03-02 15:35:57', '2025-03-02 15:35:57', 0);
 INSERT INTO `video` VALUES (6, '14计科3', '6.png', 5, '数据库系统', 1, '2025-03-02 15:35:57', '2025-03-02 15:35:57', 0);
-INSERT INTO `video` VALUES (7, '15软工2', '7.png', 6, '计算机操作系统', 0, '2025-03-02 15:35:57', '2025-03-02 15:35:57', 0);
+INSERT INTO `video` VALUES (7, '15软工2', '7.png', 6, '计算机操作系统', 1, '2025-03-02 15:35:57', '2025-04-21 12:27:21', 0);
+INSERT INTO `video` VALUES (19, '1131', 'PixPin_2025-04-17_15-39-30.png', NULL, '123123132', 0, '2025-04-19 07:10:42', '2025-04-19 07:10:42', 0);
+INSERT INTO `video` VALUES (20, 'video', '1.png', NULL, 'class', 1, '2025-04-21 12:17:57', '2025-04-21 12:27:32', 0);
+INSERT INTO `video` VALUES (21, 'wwww', '', NULL, 'rrrr', 0, '2025-04-21 12:18:04', '2025-04-21 12:18:17', 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
