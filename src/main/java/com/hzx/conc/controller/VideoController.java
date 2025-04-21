@@ -94,7 +94,8 @@ public class VideoController {
     public Result<String> update(
             @RequestParam String vid,
             @RequestParam String vname,
-            @RequestParam String cname
+            @RequestParam String cname,
+            @RequestParam Integer status
     ) {
         Video video = videoService.getOne(new LambdaQueryWrapper<Video>()
                 .eq(Video::getVid, vid));
@@ -104,6 +105,7 @@ public class VideoController {
 
         video.setVname(vname);
         video.setCname(cname);
+        video.setStatus(status);
 
         videoService.updateById(video);
         return Result.success();

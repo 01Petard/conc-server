@@ -36,7 +36,7 @@ public class UserController {
                 .eq(User::getPassword, dto.getPassword())
         );
         if (one == null){
-            throw new BaseException(MessageConstant.USER_NOT_EXIST);
+            return Result.error(MessageConstant.USER_NOT_EXIST);
         }
         return Result.success();
     }
