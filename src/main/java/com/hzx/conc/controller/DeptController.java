@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hzx.conc.common.constant.MessageConstant;
 import com.hzx.conc.common.result.Result;
+import com.hzx.conc.model.dto.DeptAddDto;
 import com.hzx.conc.model.dto.DeptDto;
 import com.hzx.conc.model.entity.Clazz;
 import com.hzx.conc.model.entity.Dept;
@@ -40,7 +41,9 @@ public class DeptController {
 
     @ApiOperation("新增学院")
     @PostMapping("/add")
-    public Result<String> addDept(@RequestBody Dept dept) {
+    public Result<String> addDept(@RequestBody DeptAddDto dto) {
+        Dept dept = new Dept();
+        dept.setDeptName(dto.getDeptName());
         deptService.save(dept);
         return Result.success();
     }
